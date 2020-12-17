@@ -1,5 +1,6 @@
 import{SolutionService} from "../services/services"
-import{possibleSudokuValues} from "../models/constants"                                                           
+import{possibleSudokuValues, emptyCellValue} from "../models/constants"
+import{computeSubgrid} from "../lib/util"                                                           
 
 export type SubGrid = {
     start_x_index: number
@@ -18,26 +19,36 @@ export class Cell implements SolutionService{
     
     constructor(
         public position:CellCoordinate, 
-        public value: string
+        public value: string = emptyCellValue
         )  {}
     
     get subgrid(): SubGrid {
-        let subgrid = <SubGrid>{ 
-            start_x_index:Math.floor(this.position.row/3) * 3,
-            start_y_index:Math.floor(this.position.column/3) * 3,
-            end_x_index:(Math.floor(this.position.row/3) *3) + 3,
-            end_y_index:(Math.floor(this.position.column/3) * 3) + 3
-        }
+        let subgrid = computeSubgrid(this.position)
         return subgrid
     }    
     
-    isSolved(): boolean {
-        throw new Error("Method not implemented.");
+    public isSolved(): boolean {
+        if (this.value == emptyCellValue) {
+           return false
+        }
+        return true
     }
 
-    solve(): boolean {
-        throw new Error("Method not implemented.");
+    public solve(): boolean {
+        return false
     }
 
-    
+    public toString = () : string => {
+        return `{
+            "position" : "${this.position.row},${this.position.column}",
+            "value" :  "${this.value}"  
+        }`.replace(/(\r\n|\n|\r)/g, "");
+
+        // return `{"(${this.position.row},${this.position.column})" : "${this.value}"}`
+        //     .replace(/(\r\n|\n|\r)/g, "");
+    }
+
+    public toJSON = () : string => {
+        return JSON.parse(this.toString())
+    }
 }

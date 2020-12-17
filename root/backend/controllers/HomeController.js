@@ -18,26 +18,20 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var server_1 = __importDefault(require("./server/server"));
-require('dotenv').config({ path: '../../.env' });
-var bodyParser = __importStar(require("body-parser"));
-var base_1 = __importDefault(require("./middleware/base"));
-var HomeController_1 = __importDefault(require("./controllers/HomeController"));
-var DefaultBoardController_1 = __importDefault(require("./controllers/DefaultBoardController"));
-var app = new server_1.default({
-    port: Number(process.env.SERVER_PORT),
-    controllers: [
-        new HomeController_1.default(),
-        new DefaultBoardController_1.default()
-    ],
-    middleWares: [
-        bodyParser.json(),
-        bodyParser.urlencoded({ extended: true }),
-        base_1.default
-    ]
-});
-app.listen();
+var express = __importStar(require("express"));
+var HomeController = /** @class */ (function () {
+    function HomeController() {
+        this.path = '/';
+        this.router = express.Router();
+        this.index = function (req, res) {
+            res.json({ "test": "test" });
+        };
+        this.initRoutes();
+    }
+    HomeController.prototype.initRoutes = function () {
+        this.router.get('/', this.index);
+    };
+    return HomeController;
+}());
+exports.default = HomeController;

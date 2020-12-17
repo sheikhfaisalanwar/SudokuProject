@@ -1,10 +1,23 @@
-import express = require('express');
-// Create a new express app instance
-const app: express.Application = express();
+import Server from './server/server'
+require('dotenv').config({path: '../../.env'})
+import * as bodyParser from 'body-parser'
+import baseMiddleware from './middleware/base'
 
-app.get('/', function (req, res) {
-    res.send('Hello World!');
-});
-app.listen(3030, function () {
-    console.log('App is listening on port 3000!');
-});
+
+import HomeController from './controllers/HomeController'
+import DefaultBoardController from './controllers/DefaultBoardController'
+
+const app = new Server({
+    port: Number(process.env.SERVER_PORT),
+    controllers: [
+        new HomeController(),
+        new DefaultBoardController()
+    ],
+    middleWares: [
+        bodyParser.json(),
+        bodyParser.urlencoded({ extended: true }),
+        baseMiddleware
+    ]
+})
+
+app.listen()

@@ -109,6 +109,42 @@ Can't think of any others for now
     - Then when we are writing the tests we should be able to see the flow very quickly
 
 
-Should probablt start by creating a functional script for solving using method mentioned above
+Should probably start by creating a functional script for solving using method mentioned above
+Finish default front end and backend display solving
+Add feature to enter puzzle 
+Add additional solving algorithm
 
 
+
+Backend structure:
+
+```
+── root
+    ├── backend
+    │   ├── app.ts
+    │   ├── controllers
+    │   │   ├── BaseController.ts
+    │   │   ├── DefaultBoardController.ts
+    │   │   └── HomeController.ts
+    │   ├── lib
+    │   │   └── util.ts
+    │   ├── middleware
+    │   │   └── base.ts
+    │   ├── models
+    │   │   ├── Board.ts
+    │   │   ├── Cell.ts
+    │   │   ├── constants.ts
+    │   │   └── dist
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── server
+    │   │   └── server.ts
+    │   ├── services
+    │   │   └── services.ts
+    │   ├── tests
+    │   │   └── models.tests
+    │   │       ├── Board.test.ts
+    │   │       ├── Cell.test.ts
+    │   │       └── dist
+
+```
