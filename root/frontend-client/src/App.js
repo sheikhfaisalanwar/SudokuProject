@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
-import Cell from "./components/Cell";
+import Board from "./components/Board";
 
 function App() {
   return (
-    <Cell />
+    <Board />
   );
 }
 

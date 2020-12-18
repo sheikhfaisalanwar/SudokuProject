@@ -39,7 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var constants_1 = require("../models/constants");
 var storage = require('node-persist');
-var Server = /** @class */ (function () {
+var Server = (function () {
     function Server(appInit) {
         this.app = express();
         this.port = appInit.port;
@@ -57,7 +57,7 @@ var Server = /** @class */ (function () {
                     dir: directory,
                     expiredInterval: 4 * 60 * 1000,
                 });
-                return [2 /*return*/];
+                return [2];
             });
         });
     };
@@ -89,3 +89,4 @@ var Server = /** @class */ (function () {
     return Server;
 }());
 exports.default = Server;
+//# sourceMappingURL=server.js.map

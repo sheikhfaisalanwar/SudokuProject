@@ -5,7 +5,6 @@ var constants_1 = require("../../models/constants");
 var chai_1 = require("chai");
 describe('Cell tests', function () {
     var position = { row: 2, column: 2 };
-    //Expected subgrid values from the 2,2 arbitraty position we specified
     var expected_start_x_index = 0;
     var expected_start_y_index = 0;
     var expected_end_x_index = 3;
@@ -30,3 +29,4 @@ describe('Cell tests', function () {
         chai_1.expect(cell.toJSON).to.not.throw(Error);
     });
 });
+//# sourceMappingURL=Cell.test.js.map

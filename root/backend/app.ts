@@ -6,12 +6,14 @@ import baseMiddleware from './middleware/base'
 
 import HomeController from './controllers/HomeController'
 import DefaultBoardController from './controllers/DefaultBoardController'
+import CustomBoardController from "./controllers/CustomBoardController";
 
 const app = new Server({
     port: Number(process.env.SERVER_PORT),
     controllers: [
         new HomeController(),
-        new DefaultBoardController()
+        new DefaultBoardController(),
+        new CustomBoardController()
     ],
     middleWares: [
         bodyParser.json(),

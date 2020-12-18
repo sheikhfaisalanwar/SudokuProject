@@ -1,12 +1,11 @@
 import * as express from 'express'
 import { Request, Response } from 'express'
 import { ControllerBase } from './BaseController'
-import { defaultPuzzle, defaultStrategy } from '../models/constants'
 import { serializeBoard } from '../services/services'
 
-class DefaultBoardController implements ControllerBase {
-    public get = '/getDefaultBoard'
-    public solve = '/solveDefaultBoard'
+class CustomBoardController implements ControllerBase {
+    public get = '/getCustomBoard/:puzzle'
+    public solve = '/solveCustomBoard/:puzzle'
     public router = express.Router()
 
     constructor() {
@@ -14,22 +13,22 @@ class DefaultBoardController implements ControllerBase {
     }
 
     public initRoutes() {
-        this.router.get(this.get, this.getDefaultBoard);
-        this.router.get(this.solve, this.solveDefaultBoard);
+        this.router.post(this.get, this.getCustomBoard);
+        this.router.post(this.solve, this.solveCustomBoard);
     }
 
-    getDefaultBoard = (req: Request, res: Response) => {
+    getCustomBoard = (req: Request, res: Response) => {
         try{
-            let base = new serializeBoard();
+            let base = new serializeBoard(req.query.puzzle as string);
             res.json(base.setupBoard())
         } catch(e){
             throw Error(e)
         }
     }
 
-    solveDefaultBoard = (req: Request, res: Response) => {
+    solveCustomBoard = (req: Request, res: Response) => {
         try{
-            let base = new serializeBoard();
+            let base = new serializeBoard(req.query.puzzle as string);
             base.setupBoard();
             res.json(base.returnSolved());
         } catch(e){
@@ -38,4 +37,4 @@ class DefaultBoardController implements ControllerBase {
     }
 }
 
-export default DefaultBoardController
+export default CustomBoardController

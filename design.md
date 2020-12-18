@@ -113,6 +113,8 @@ Should probably start by creating a functional script for solving using method m
 Finish default front end and backend display solving
 Add feature to enter puzzle 
 Add additional solving algorithm
+Did not follow tdd naming conventions
+Can add redux for state caching of default objects
 
 
 
@@ -148,3 +150,5 @@ Backend structure:
     │   │       └── dist
 
 ```
+
+

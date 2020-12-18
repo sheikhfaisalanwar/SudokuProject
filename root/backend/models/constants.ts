@@ -4,9 +4,10 @@ export const emptyCellValue = '0';
 export const maxCellValue: number = 81;
 export const maxRowValue = 9;
 export const maxColumnValue = 9;
-export const defaultStrategy = 'RecursiveBruteForceStrategy'
-export const alternativeStrategy = 'AlternativeStrategy'
-export const persistanceFile = "../persistance/state.json"
+export const maxSubgridLength = 9;
+export const defaultStrategy = 'RecursiveBruteForceStrategy';
+export const alternativeStrategy = 'AlternativeStrategy';
+export const persistanceFile = "../persistance/state.json";
 
 
     

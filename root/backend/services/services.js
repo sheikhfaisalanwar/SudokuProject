@@ -1,34 +1,63 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.serializeDefaultBoard = exports.AlternativeStrategy = exports.RecursiveBruteForceStrategy = void 0;
+exports.serializeBoard = exports.AlternativeStrategy = exports.RecursiveBruteForceStrategy = void 0;
 var Board_1 = require("../models/Board");
-var RecursiveBruteForceStrategy = /** @class */ (function () {
+var constants_1 = require("../models/constants");
+var RecursiveBruteForceStrategy = (function () {
     function RecursiveBruteForceStrategy() {
     }
     RecursiveBruteForceStrategy.prototype.solve = function (board) {
-        return board;
+        var emptyCell = board.getFirstEmpty();
+        if (emptyCell == null) {
+            board.setSolved();
+            return true;
+        }
+        for (var i = 1; i <= 9; i++) {
+            if (board.checkValid(emptyCell, String(i))) {
+                var cell = board.setCell(String(i), emptyCell);
+                if (this.solve(board)) {
+                    return true;
+                }
+                board.setCell(constants_1.emptyCellValue, cell);
+            }
+        }
+        return false;
+    };
+    RecursiveBruteForceStrategy.prototype.validateSolved = function (board) {
+        return board.validateAllCells();
     };
     return RecursiveBruteForceStrategy;
 }());
 exports.RecursiveBruteForceStrategy = RecursiveBruteForceStrategy;
-var AlternativeStrategy = /** @class */ (function () {
+var AlternativeStrategy = (function () {
     function AlternativeStrategy() {
     }
     AlternativeStrategy.prototype.solve = function (board) {
-        return board;
+        return [board, false];
+    };
+    AlternativeStrategy.prototype.validateSolved = function (board) {
+        return board.validateAllCells();
     };
     return AlternativeStrategy;
 }());
 exports.AlternativeStrategy = AlternativeStrategy;
-var serializeDefaultBoard = /** @class */ (function () {
-    function serializeDefaultBoard(board) {
-        this.board = board;
+var serializeBoard = (function () {
+    function serializeBoard(board_rep) {
+        if (board_rep === void 0) { board_rep = constants_1.defaultPuzzle; }
+        this.board_rep = board_rep;
+        this.newBoard = new Board_1.Board();
     }
-    serializeDefaultBoard.prototype.setupBoard = function () {
-        var newBoard = new Board_1.Board();
-        newBoard.populateBoard(this.board);
-        return newBoard.toJSON();
+    serializeBoard.prototype.setupBoard = function () {
+        this.newBoard.populateBoard(this.board_rep);
+        return this.newBoard.toJSON();
     };
-    return serializeDefaultBoard;
+    serializeBoard.prototype.returnSolved = function () {
+        var solved = this.newBoard.solve();
+        if (this.newBoard.solve()) {
+            return this.newBoard.toJSON();
+        }
+    };
+    return serializeBoard;
 }());
-exports.serializeDefaultBoard = serializeDefaultBoard;
+exports.serializeBoard = serializeBoard;
+//# sourceMappingURL=services.js.map

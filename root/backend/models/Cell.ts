@@ -1,4 +1,3 @@
-import{SolutionService} from "../services/services"
 import{possibleSudokuValues, emptyCellValue} from "../models/constants"
 import{computeSubgrid} from "../lib/util"                                                           
 
@@ -15,7 +14,7 @@ export type CellCoordinate = {
     column: number
 }
 
-export class Cell implements SolutionService{
+export class Cell {
     
     constructor(
         public position:CellCoordinate, 
@@ -23,19 +22,11 @@ export class Cell implements SolutionService{
         )  {}
     
     get subgrid(): SubGrid {
-        let subgrid = computeSubgrid(this.position)
-        return subgrid
+        return computeSubgrid(this.position)
     }    
     
     public isSolved(): boolean {
-        if (this.value == emptyCellValue) {
-           return false
-        }
-        return true
-    }
-
-    public solve(): boolean {
-        return false
+        return this.value != emptyCellValue;
     }
 
     public toString = () : string => {
@@ -43,9 +34,6 @@ export class Cell implements SolutionService{
             "position" : "${this.position.row},${this.position.column}",
             "value" :  "${this.value}"  
         }`.replace(/(\r\n|\n|\r)/g, "");
-
-        // return `{"(${this.position.row},${this.position.column})" : "${this.value}"}`
-        //     .replace(/(\r\n|\n|\r)/g, "");
     }
 
     public toJSON = () : string => {

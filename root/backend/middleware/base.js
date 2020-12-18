@@ -5,3 +5,4 @@ var baseMiddleware = function (req, resp, next) {
     next();
 };
 exports.default = baseMiddleware;
+//# sourceMappingURL=base.js.map
