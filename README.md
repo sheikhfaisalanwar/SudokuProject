@@ -81,6 +81,8 @@ https://github.com/sheikhfaisalanwar/SudokuProject/blob/master/root/backend/serv
 
 
 ## Next Steps:
+ - Error handling 
+   - Invalid entries
  - Decorate all controllers with swagger and generate swagger.json
  - Add additional algorithms as solution services: http://norvig.com/sudoku.html
  - Add React dialog to choose Algorithm
