@@ -1,4 +1,4 @@
-# Title / Repository Name
+# Sudoku Project Sheikh Faisal Anwar
 
 ## About / Synopsis
 
@@ -10,7 +10,7 @@
 
 
 
-> * [Title / Repository Name](#title--repository-name)
+> * [Sudoku Project Sheikh Faisal Anwar]
 >   * [About / Synopsis](#about--synopsis)
 >   * [Table of contents](#table-of-contents)
 >   * [Installation](#installation)
@@ -30,12 +30,13 @@
 
 ## Installation
 
-Sample:
+While in the `root` folder 
 
-* From the Nuxeo Marketplace: install [the Sample Nuxeo Package](https://connect.nuxeo.com/nuxeo/site/marketplace/package/nuxeo-sample).
-* From the command line: `nuxeoctl mp-install nuxeo-sample`
+* npm install
 
 ## Usage
+
+* npm
 
 ### Screenshots
 
