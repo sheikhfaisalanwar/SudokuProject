@@ -18,7 +18,7 @@ var CustomBoardController = (function () {
         };
         this.solveCustomBoard = function (req, res) {
             try {
-                var base = new services_1.serializeBoard(req.query.puzzle);
+                var base = new services_1.serializeBoard(req.params['puzzle']);
                 base.setupBoard();
                 res.json(base.returnSolved());
             }

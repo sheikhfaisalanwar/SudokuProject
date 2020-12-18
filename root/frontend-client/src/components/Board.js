@@ -32,7 +32,9 @@ class Board extends React.Component {
     }
 
     solve(){
-        API.get('/solveDefaultBoard')
+        let result = this.state.cells.map(a => a.value).join('');
+        console.log(result);
+        API.post('/solveCustomBoard/' + "" + result)
             .then(res => {
                 const cells = res.data["Cells"];
                 this.setState({cells: cells})
