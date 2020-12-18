@@ -55,6 +55,57 @@ Here are some additional puzzle formats to test with:
 ### Content
 
 Backend Client built in ExpressJS
+├── README.md
+├── Sudokuassignment-webversion_Nov2020.docx
+├── design.md
+├── first-try-solve.py
+├── img_1.png
+├── package-lock.json
+├── package.json
+└── root
+    ├── backend
+    │   ├── app.ts
+    │   ├── controllers
+    │   │   ├── BaseController.ts
+    │   │   ├── CustomBoardController.ts
+    │   │   ├── DefaultBoardController.ts
+    │   │   └── HomeController.ts
+    │   ├── lib
+    │   │   └── util.ts
+    │   ├── middleware
+    │   │   └── base.ts
+    │   ├── models
+    │   │   ├── Board.ts
+    │   │   ├── Cell.ts
+    │   │   ├── constants.ts
+    │   │   └── dist
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── server
+    │   │   └── server.ts
+    │   ├── services
+    │   │   └── services.ts
+    │   ├── tests
+    │   │   ├── models.tests
+    │   │   │   ├── Board.test.ts
+    │   │   │   ├── Cell.test.ts
+    │   │   │   └── dist
+    │   │   └── services.tests
+    │   │       └── Strategy.test.ts
+    │   └── tsconfig.json
+    ├── frontend-client
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   └── src
+    │       ├── App.css
+    │       ├── api
+    │       ├── components
+    │       └── index.css
+    ├── package-lock.json
+    ├── package.json
+    └── persistance
+        └── state.json
+
 
 
 Frontend Client in React
