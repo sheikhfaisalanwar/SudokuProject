@@ -19,7 +19,7 @@ class CustomBoardController implements ControllerBase {
 
     getCustomBoard = (req: Request, res: Response) => {
         try{
-            let base = new serializeBoard(req.query.puzzle as string);
+            let base = new serializeBoard(req.params['puzzle'] as string);
             res.json(base.setupBoard())
         } catch(e){
             throw Error(e)

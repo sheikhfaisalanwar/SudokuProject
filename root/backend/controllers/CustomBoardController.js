@@ -9,7 +9,7 @@ var CustomBoardController = (function () {
         this.router = express.Router();
         this.getCustomBoard = function (req, res) {
             try {
-                var base = new services_1.serializeBoard(req.query.puzzle);
+                var base = new services_1.serializeBoard(req.params['puzzle']);
                 res.json(base.setupBoard());
             }
             catch (e) {
