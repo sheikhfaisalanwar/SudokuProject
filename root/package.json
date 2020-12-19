@@ -7,7 +7,7 @@
     "postinstall": "concurrently \"npm run install-frontend\" \"npm run install-backend\"",
     "frontend": "cd frontend-client && npm start",
     "backend": "cd backend && tsc && npm start app.js",
-    "start": "concurrently --kill-others-on-fail \"npm run frontend\" \"npm run backend\"
+    "start": "concurrently --kill-others-on-fail \"npm run frontend\" \"npm run backend\""
   },
   "dependencies": {
     "body-parser": "^1.18.3",
