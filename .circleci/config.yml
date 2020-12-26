@@ -5,7 +5,7 @@ jobs:
   backend_tests:
     docker:
       - image: cimg/node:15.5.0
-    working-directory: ~/SudokuProject/root/backend
+    working_directory: ~/SudokuProject/root/backend
     steps:
       - checkout
       - run: ls -la
