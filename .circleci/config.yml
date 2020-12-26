@@ -1,0 +1,18 @@
+version: 2.1
+
+# Define the jobs we want to run for this project
+jobs:
+  backend_tests:
+    docker:
+      - image: cimg/node:15.5.0
+    working_directory: ~/SudokuProject/root/backend
+    steps:
+      - checkout
+      - run: ls -la
+      - run: cd root/backend && npm install && npm test
+
+# Orchestrate our job run sequence
+workflows:
+  backend_tests:
+    jobs:
+      - backend_tests
