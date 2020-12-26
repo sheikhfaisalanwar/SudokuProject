@@ -1,7 +1,4 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
+  
 version: 2
 jobs:
   build:
@@ -9,8 +6,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:8.11
 
-    working_directory: ~/SudokuProject/root/backend
-
+    working_directory: $CIRCLE_WORKING_DIRECTORY/root/backend
     steps:
       
       - run: npm install
