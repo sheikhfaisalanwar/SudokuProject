@@ -1,17 +1,32 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
 jobs:
-  test:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.11
+
     working_directory: ~/SudokuProject/root/backend
-    executor:
-      name: node/default
-      tag: '13'
+
     steps:
       - checkout
-      - node/install-packages
-      - run: npm run test
-orbs:
-  node: 'circleci/node@2.0.0'
-version: 2.1
-workflows:
-  test_my_app:
-    jobs:
-      - test
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      # run tests!
+      - run: npm test
