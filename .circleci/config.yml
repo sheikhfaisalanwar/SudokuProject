@@ -6,7 +6,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:8.11
 
-    working_directory: $CIRCLE_WORKING_DIRECTORY/root/backend
+    working_directory: ./root/backend
     steps:
       
       - run: npm install
