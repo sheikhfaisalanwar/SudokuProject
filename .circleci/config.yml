@@ -1,15 +1,19 @@
-  
-version: 2
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8.11
+version: 2.1
 
-    working_directory: ~/repo/root/backend
+# Define the jobs we want to run for this project
+jobs:
+  backend_tests:
+    docker:
+      - image: cimg/node:15.5.0
+    working-directory: ~/SudokuProject/root/backend
     steps:
       - checkout
+      - run: ls -la
       - run: npm install
-      
-      # run tests!
       - run: npm test
+
+# Orchestrate our job run sequence
+workflows:
+  backend_tests:
+    jobs:
+      - backend_tests
