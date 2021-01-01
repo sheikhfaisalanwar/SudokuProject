@@ -8,7 +8,7 @@
     "tsc": "tsc",
     "frontend": "cd frontend-client && npm start",
     "backend": "cd backend && tsc && npm start app.js",
-    "start": "npm run backend",
+    "start": "cd backend && tsc && npm start app.js",
     "heroku-postbuild": "cd frontend-client && npm install --only=dev && npm install && npm run build"
   },
   "dependencies": {
