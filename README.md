@@ -48,9 +48,23 @@ A browser window should open up with following:
 - Clicking on Reset: Revert to unsolved Default Board
 - Clicking on Add new puzzle: Opens a dialog to enter a puzzle in the format below
   **856014730090000000240000160062059300031802450005340920024000073000000010018630294**
-
+  
+  
+#### API
+- GET
+  - /getDefaultBoard : Retrieve default board as JSON
+  - /solveDefaultboard : Return solved board as JSON
+- POST
+  - /getCustomBoard/:puzzle/ : Serialize a string passed as `puzzle` and return a JSON
+  - /solveCustomBoard/:puzzle/ : Serialize and solve a string board passed as `puzzle`. Return solved JSON
+  
+  
+  
 Here are some additional puzzle formats to test with:
-- Easy: 001004002050003019470000005000080207004090800806030000200000068180200040500300900
+  - Easy: 
+     - 001004002050003019470000005000080207004090800806030000200000068180200040500300900
+     - 200080300060070084030500209000105408000000000402706000301007040720040060004010003
+                 
 
 ### Content
 
@@ -70,6 +84,8 @@ https://github.com/sheikhfaisalanwar/SudokuProject/blob/master/root/backend/serv
 
 
 ## Next Steps:
+ - Error handling 
+   - Invalid entries
  - Decorate all controllers with swagger and generate swagger.json
  - Add additional algorithms as solution services: http://norvig.com/sudoku.html
  - Add React dialog to choose Algorithm

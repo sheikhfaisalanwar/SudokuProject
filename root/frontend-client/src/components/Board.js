@@ -2,6 +2,7 @@ import React from 'react';
 import Cell from "./Cell";
 import API from '../api/api';
 import Dialog from 'react-bootstrap-dialog'
+import {Button} from "react-bootstrap";
 
 class Board extends React.Component {
 
@@ -19,8 +20,10 @@ class Board extends React.Component {
 
     showDialog () {
         this.dialog.show({
-            body: 'Input your puzzle string. Example:856014730090000000240000160062059300031802450005340920024000073000000010018630294 ',
+            body: 'Input your puzzle string. \b' +
+                'Example: \b 856014730090000000240000160062059300031802450005340920024000073000000010018630294 ',
             prompt: Dialog.TextPrompt(),
+            bsSize: 'lg',
             actions: [
                 Dialog.CancelAction(),
                 Dialog.OKAction((dialog) => {
@@ -85,6 +88,7 @@ class Board extends React.Component {
 
         const style = {
             margin:'auto',
+            marginBottom: '1em',
             width: "auto",
             height:"auto",
             backgroundColor:'white',
@@ -113,10 +117,13 @@ class Board extends React.Component {
                     {rows}
                     </tbody>
                 </table>
-                <button key="solve" style={{margin:"auto"}} onClick={this.solve}>Solve</button>
-                <button key="reset" style={{margin:"auto"}} onClick={this.reset}>Reset</button>
-                <button onClick={this.showDialog}>Add new Puzzle</button>
-                <Dialog ref={(component) => { this.dialog = component }} />
+                <Button variant="primary" key="solve" style={{margin:"auto"}} onClick={this.solve}>Solve</Button>
+                <Button variant="secondary" key="reset" style={{margin:"auto"}} onClick={this.reset}>Reset</Button>
+                <Button variant="secondary" onClick={this.showDialog}>Add new Puzzle</Button>
+                <Dialog contentStyle={{
+                    width: '100%',
+                    maxWidth: 'none',
+                }} ref={(component) => { this.dialog = component }} />
             </div>
 
         );
