@@ -8,7 +8,7 @@
     "frontend": "cd frontend-client && npm start",
     "backend": "cd backend && tsc && npm start app.js",
     "start": "npm run backend",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+    "heroku-postbuild": "cd frontend-client && npm install --only=dev && npm install && npm run build"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
